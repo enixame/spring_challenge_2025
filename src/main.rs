@@ -28,7 +28,6 @@
 //
 //------------------------------------------------------------------------------
 
-use std::fmt::Error;
 // Import necessary standard library modules.
 use std::fs::File;
 use std::io::{BufReader, BufRead, Write};
