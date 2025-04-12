@@ -284,10 +284,7 @@ fn main() -> std::io::Result<()> {
             initial_state = set_cell(initial_state, i * SIZE + j, row[j]);
         }
     }
-
-    let expected_line = lines.next().unwrap()?;
-    let expected_result: u64 = expected_line.trim().parse().unwrap();
-
+    
     // Create a HashMap for memoization with a custom hasher and preallocated capacity.
     let mut memo: HashMap<u64, u64, FxBuildHasher> =
         HashMap::with_capacity_and_hasher(1 << 16 , FxBuildHasher::default());
@@ -295,12 +292,94 @@ fn main() -> std::io::Result<()> {
     let mut total = 0;
     dfs(initial_state, 0, depth, &mut memo, &mut total);
     
-    if total != expected_result {
-        eprintln!("Expected result: {}, result: {}", expected_result, total);
-    }
-    else{
-        println!("{}", total);
-    }
+    println!("{}", total);
+
     Ok(())
     
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn run_test_case(path: &str) {
+        use std::fs::File;
+        use std::io::{BufRead, BufReader};
+
+        // Open the input file
+        let file = File::open(path).expect("Failed to open file");
+        let mut lines = BufReader::new(file).lines();
+
+        // Read the depth from the first line
+        let depth: u64 = lines.next().unwrap().unwrap().trim().parse().unwrap();
+
+        // Read the 3x3 board
+        let mut initial_state: u64 = 0;
+        for i in 0..SIZE {
+            let row: Vec<u64> = lines.next().unwrap().unwrap()
+                .split_whitespace()
+                .map(|x| x.parse().unwrap())
+                .collect();
+            for j in 0..SIZE {
+                initial_state = set_cell(initial_state, i * SIZE + j, row[j]);
+            }
+        }
+
+        // Read the expected result
+        let expected: u64 = lines.next().unwrap().unwrap().trim().parse().unwrap();
+
+        // Run the DFS
+        let mut memo: HashMap<u64, u64, FxBuildHasher> =
+            HashMap::with_capacity_and_hasher(1 << 16, FxBuildHasher::default());
+        let mut total = 0;
+        dfs(initial_state, 0, depth, &mut memo, &mut total);
+
+        // Print and compare results
+        println!("[{}] Expected: {}", path, expected);
+        println!("[{}] Got     : {}", path, total);
+        assert_eq!(total, expected);
+    }
+
+    #[test]
+    fn test_multiple_cases() {
+        let test_files = vec![
+            "tests/data/2_states.txt",
+            "tests/data/6_states.txt",
+            "tests/data/2_unique_states.txt",
+            "tests/data/11_unique_states.txt",
+            "tests/data/20_unique_states.txt",
+            "tests/data/241_unique_states.txt",
+            "tests/data/2168_unique_states.txt",
+            "tests/data/4154_unique_states.txt",
+            "tests/data/4956_unique_states.txt",
+            "tests/data/6044_unique_states.txt",
+            "tests/data/93190_unique_states.txt",
+            "tests/data/94956_unique_states.txt",
+
+            "tests/data/input1.txt",
+            "tests/data/input2.txt",
+            "tests/data/input3.txt",
+            "tests/data/input4.txt",
+            "tests/data/input5.txt",
+            "tests/data/input6.txt",
+            "tests/data/input7.txt",
+            "tests/data/input8.txt",
+            "tests/data/input9.txt",
+            "tests/data/input10.txt",
+            "tests/data/input11.txt",
+            "tests/data/input12.txt",
+            "tests/data/input13.txt",
+            "tests/data/input14.txt",
+            "tests/data/input15.txt",
+            "tests/data/input16.txt",
+            "tests/data/input17.txt",
+            "tests/data/input18.txt",
+            "tests/data/input19.txt",
+            "tests/data/input20.txt",
+        ];
+
+        for file in test_files {
+            run_test_case(file);
+        }
+    }
 }
