@@ -30,7 +30,7 @@
 
 // Import necessary standard library modules.
 use std::fs::File;
-use std::io::{BufReader, BufRead, Write};
+use std::io::{BufRead, Write};
 use std::collections::HashMap;
 use std::hash::{BuildHasher, Hasher};
 
@@ -270,8 +270,8 @@ fn dfs(state: u64, turn: u64, max_depth: u64, memo: &mut HashMap<u64, u64, FxBui
 // which is finally printed to the standard output.
 fn main() -> std::io::Result<()> {
     // Lire depuis input.txt
-    let input_file = File::open("94956_unique_states.txt")?;
-    let mut lines = BufReader::new(input_file).lines();
+    let stdin = std::io::stdin();
+    let mut lines = stdin.lock().lines();
 
     let depth: u64 = lines.next().unwrap()?.trim().parse().unwrap();
 
@@ -295,10 +295,7 @@ fn main() -> std::io::Result<()> {
 
     let mut total = 0;
     dfs(initial_state, 0, depth, &mut memo, &mut total);
-
-    let mut output = File::create("output.txt")?;
-    writeln!(output, "{}", total)?;
-
+    
     if total != expected_result {
         eprintln!("Expected result: {}, result: {}", expected_result, total);
     }
