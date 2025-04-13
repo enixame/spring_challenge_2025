@@ -30,7 +30,7 @@ You can use Visual Studio Code for development.
 
 Download and install VS Code from: [Visual Studio Code](https://code.visualstudio.com/)
 
-### ▶ Install VS Code
+### ▶ Recommended Extensions
 
 Install the following extensions from the VS Code Marketplace:
 
