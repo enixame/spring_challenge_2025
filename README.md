@@ -9,7 +9,7 @@ This project implements a depth-first search (DFS) with memoization for explorin
 
 To install Rust:
 
-### ▶ On Unix (Linux/macOS)
+### ▶ On Unix (Linux)
 
 ```bash
 curl https://sh.rustup.rs -sSf | sh
@@ -30,6 +30,30 @@ You can use Visual Studio Code for development.
 ### ▶ Install VS Code
 
 Download and install VS Code from: [Visual Studio Code](https://code.visualstudio.com/)
+
+### ▶ On Unix (Linux)
+
+🐧 On Unix (Debian-based systems)
+
+```bash
+sudo apt update
+sudo apt install wget gpg
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo apt update
+sudo apt install code
+```
+
+If you're using Fedora, Arch, etc., refer to: [Install VS Code on Linux] (https://code.visualstudio.com/docs/setup/linux)
+
+### ▶ On Windows (PowerShell)
+
+```bash
+Invoke-WebRequest -Uri https://aka.ms/win32-x64-user-stable -OutFile VSCodeSetup.exe
+Start-Process .\VSCodeSetup.exe
+```
+This downloads and launches the official installer for the stable build.
 
 ### ▶ Recommended Extensions
 
