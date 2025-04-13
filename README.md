@@ -2,6 +2,7 @@
 
 This project implements a depth-first search (DFS) with memoization for exploring 3x3 board states.
 
+
 ## 📦 Requirements
 
 - [Rust toolchain](https://www.rust-lang.org/tools/install)
@@ -19,6 +20,30 @@ curl https://sh.rustup.rs -sSf | sh
 ```bash
 irm https://sh.rustup.rs -UseBasicParsing | iex
 ```
+
+
+## 🔧 VS Code Setup (Optional but Recommended)
+
+You can use Visual Studio Code for development.
+
+### ▶ Install VS Code
+
+Download and install VS Code from: [Visual Studio Code](https://code.visualstudio.com/)
+
+### ▶ Install VS Code
+
+Install the following extensions from the VS Code Marketplace:
+
+- rust-analyzer (official language server)
+
+- CodeLLDB (debugger support)
+
+- Dependi (manage dependencies and address vulnerabilities in Rust)
+
+- Even Better TOML (syntax support for .toml files)
+
+You can find these in the Extensions panel (Ctrl+Shift+X) or by visiting the VS Code marketplace.
+
 
 ## ⚙️ Requirements
 
@@ -71,6 +96,7 @@ Or with the compiled binary:
 ```bash
 Get-Content input.txt | .\target\release\spring_challenge_2025.exe
 ```
+
 
 ## 🧪 Run Tests
 
