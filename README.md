@@ -18,7 +18,8 @@ curl https://sh.rustup.rs -sSf | sh
 ### ▶ On Windows (PowerShell)
 
 ```bash
-irm https://sh.rustup.rs -UseBasicParsing | iex
+Invoke-WebRequest -Uri https://win.rustup.rs/x86_64 -OutFile rustup-init.exe
+.\rustup-init.exe
 ```
 
 
