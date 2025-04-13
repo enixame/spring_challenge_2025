@@ -43,7 +43,7 @@ Install the following extensions from the VS Code Marketplace:
 
 - Even Better TOML (syntax support for .toml files)
 
-You can find these in the Extensions panel (Ctrl+Shift+X) or by visiting the VS Code marketplace.
+You can find these in the Extensions panel (Ctrl+Shift+X) or by visiting the [VS Code marketplace](https://marketplace.visualstudio.com/).
 
 
 ## ⚙️ Requirements
