@@ -45,7 +45,7 @@ sudo apt update
 sudo apt install code
 ```
 
-If you're using Fedora, Arch, etc., refer to: [Install VS Code on Linux] (https://code.visualstudio.com/docs/setup/linux)
+If you're using Fedora, Arch, etc., refer to: [Install VS Code on Linux](https://code.visualstudio.com/docs/setup/linux)
 
 ### ▶ On Windows (PowerShell)
 
