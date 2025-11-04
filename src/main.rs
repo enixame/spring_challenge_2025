@@ -8,6 +8,7 @@
 // intermediate results in a HashMap to avoid redundant recalculations of the same state.
 // 
 // Algorithm:
+
 // 1. Encode the board in a 64-bit integer, each cell using 4 bits.
 // 2. Use helper functions `get_cell` and `set_cell` to read and modify the state.
 // 3. Implement DFS: For each state, if the maximum depth is reached or the board is full, compute a hash 
